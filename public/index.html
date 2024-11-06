@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping</title>
+</head>
+<body>
+    <h1>Amazon Products</h1>
+    <% if (data && data.length > 0) { %>
+        <ul>
+        <% data.forEach(product => { %>
+            <li>
+                <h2><%= product.title %></h2>
+                <p>Price: <%= product.price %></p>
+                <img src="<%= product.imageURL %>" alt="<%= product.title %>" width="100">
+            </li>
+        <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No data found.</p>
+    <% } %>
+
+    <script src="/app.js"></script>
+</body>
+</html>

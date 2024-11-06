@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping</title>
+
+    <!-- Basic CSS for styling cards -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .card .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .no-products {
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazon Products</h1>
+
+    <div class="container">
+        <% if (data && data.length > 0) { %>
+            <% data.forEach(product => { %>
+                <div class="card">
+                    <img src="<%= product.imageURL %>" alt="<%= product.title %>">
+                    <div class="card-content">
+                        <h2><%= product.title %></h2>
+                        <p class="price"><%= product.price %></p>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div class="no-products">
+                <p>No products found.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
